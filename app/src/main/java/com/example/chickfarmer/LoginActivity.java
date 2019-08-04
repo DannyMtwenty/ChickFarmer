@@ -2,6 +2,7 @@ package com.example.chickfarmer;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -11,42 +12,24 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
-
+import java.util.ArrayList;
 public class LoginActivity extends AppCompatActivity {
-    SQLiteDatabase db;
-    SQLiteOpenHelper openHelper;
+   DatabaseAdaptor myDatabaseAdaptor;
 
     EditText edtUsername;
     EditText edtPass;
     Button btnLogin;
     Button btnRegister;
-Cursor cursor; //cursor class
+    Context context;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        openHelper=new DatabaseHelper(this);
-         db=openHelper.getReadableDatabase();
+        myDatabaseAdaptor=new DatabaseAdaptor(LoginActivity.this);
         edtUsername=(EditText) findViewById(R.id.edtUsername);
         edtPass=(EditText) findViewById(R.id.edtPass);
         btnLogin=(Button) findViewById(R.id.btnLogin);
         btnRegister=(Button) findViewById(R.id.btnRegister);
-      btnLogin.setOnClickListener(new View.OnClickListener() {
-          @Override
-          public void onClick(View view) {
-              String username = edtUsername.getText().toString();//listening events of the button
-              String pwd = edtPass.getText().toString();
-              cursor = db.rawQuery("SELECT * FROM " + DatabaseHelper.TABLE_NAME  + " WHERE " + DatabaseHelper.COL_6 + "=? AND " + DatabaseHelper.COL_7 + "=?", new String[]{username, pwd});
-              if (cursor != null) {
-                  if (cursor.getCount() >= 0) {
-                      cursor.moveToNext();
-                      Intent intent = new Intent(LoginActivity.this, HomepageActivity.class);
-                      startActivity(intent);
-                  }
-              }
-          }
-      });
-
         btnRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -54,5 +37,21 @@ Cursor cursor; //cursor class
                 startActivity(registerIntent);
             }
         });
+
+        btnLogin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                myDatabaseAdaptor = new DatabaseAdaptor(LoginActivity.this);
+                boolean farmers = myDatabaseAdaptor.checkUser(edtUsername.getText().toString(),edtPass.getText().toString());
+                Toast.makeText(LoginActivity.this, "emp"+farmers, Toast.LENGTH_SHORT).show();
+                if(farmers == true){
+                    Intent intent=new Intent(LoginActivity.this, RegistrationActivity.class);
+                    startActivity(intent);
+                }
+            }
+        });
+
+
     }
+
 }

@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#ffb780"
     tools:context=".RegistrationActivity">
 
 
@@ -38,7 +39,7 @@
         android:text="Contacts"
         android:textColor="#F74F1B"
         android:textSize="18sp"
-        app:layout_constraintBottom_toTopOf="@+id/txtPassconf"
+        app:layout_constraintBottom_toTopOf="@+id/textview"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.686" />
@@ -93,7 +94,7 @@
         android:text="LastName"
         android:textColor="#F74F1B"
         android:textSize="18sp"
-        app:layout_constraintBottom_toTopOf="@+id/txtPassconf"
+        app:layout_constraintBottom_toTopOf="@+id/textview"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.436" />
@@ -119,7 +120,7 @@
         app:layout_constraintVertical_bias="0.424" />
 
     <EditText
-        android:id="@+id/edtPassword"
+        android:id="@+id/edtPass"
         android:layout_width="219dp"
         android:layout_height="49dp"
         android:layout_marginStart="8dp"
@@ -168,7 +169,7 @@
         android:text="UserName"
         android:textColor="#F74F1B"
         android:textSize="18sp"
-        app:layout_constraintBottom_toTopOf="@+id/txtPassconf"
+        app:layout_constraintBottom_toTopOf="@+id/textview"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.835" />
@@ -223,13 +224,13 @@
         android:text="Age"
         android:textColor="#F74F1B"
         android:textSize="18sp"
-        app:layout_constraintBottom_toTopOf="@+id/txtPassconf"
+        app:layout_constraintBottom_toTopOf="@+id/textview"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.58" />
 
     <TextView
-        android:id="@+id/txtPassconf"
+        android:id="@+id/textview"
         android:layout_width="154dp"
         android:layout_height="32dp"
         android:layout_marginStart="8dp"

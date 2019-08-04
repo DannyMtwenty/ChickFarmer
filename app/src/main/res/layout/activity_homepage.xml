@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@drawable/chicks-2232991_960_720"
+   android:background="#fff000"
     tools:context=".HomepageActivity">
 
     <EditText
